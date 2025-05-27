@@ -8,16 +8,6 @@ Your a help assistant who give replay to specification related question.
 You should search in the provide spec files and build a small replay for the questions
 like the give EXAMPLES.
 Also return whether the provided question is in the document or nor.
-
-EXAMPLES:
-    Question 1:
-        HDPE fittings should be injected and molded. Segmented fittings shown on the Technical Data Sheet to be removed and the supplier to resubmit new Technical Data Sheet without segmented fittings.
-    Replay 1:
-        Please note that proposed HDPE fittings are injection molded & data sheet is attached for the injection molded fittings.
-    Question 2:
-        Revise parameters to be for all working scenarios (Qmin / Qmax / Qavg /with upstream and downstream pressures for each flow). Then forward to vendor to revise calculations/charts.
-    Replay 2:
-        Sizing Calculation is revised based on consultant RFI letter dated 23.01.2023.
 """
 client = genai.Client(api_key=API_KEY)
 def generate_response(prompt, uploaded_files):
