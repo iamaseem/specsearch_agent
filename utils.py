@@ -7,6 +7,7 @@ SYSTEM_PROMPT = """
 Your a help assistant who give replay to specification related question.
 You should search in the provide spec files and build a small replay for the questions
 like the give EXAMPLES.
+Also return whether the provided question is in the document or nor.
 
 EXAMPLES:
     Question 1:
@@ -23,12 +24,16 @@ def generate_response(prompt, uploaded_files):
     total_content = [prompt]
     total_content.extend(uploaded_files)
     response = client.models.generate_content(
-        model="gemini-2.0-flash-lite",
+        model="gemini-2.5-flash-preview-04-17",
         config=types.GenerateContentConfig(
         #     tools=ordering_system,
             system_instruction=SYSTEM_PROMPT,
         ),
         contents=total_content,
+        generate_content_config = types.GenerateContentConfig(
+        temperature=0,
+        response_mime_type="text/plain",
+    )
     )
     return response.text
 
