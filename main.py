@@ -15,6 +15,7 @@ if already_uploaded_files:
     for file in already_uploaded_files:
         if file.display_name:
             st.sidebar.write(f"- {file.display_name}")
+            gemini_uploaded_files.append(file)
 
 # File uploader
 uploaded_files = st.file_uploader("Choose files (optional, content not yet sent to Gemini)", accept_multiple_files=True)
