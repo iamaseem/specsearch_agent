@@ -34,7 +34,7 @@ def generate_response(prompt, uploaded_files):
 
 def create_gemini_file(file):
     uploaded_file = client.files.upload(file=file, config=dict(
-    mime_type='application/pdf'))
+    mime_type='application/pdf', display_name=file.name))
     return uploaded_file
 
 def get_all_files_uploaded():

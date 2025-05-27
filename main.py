@@ -1,6 +1,6 @@
 import streamlit as st
 
-from utils import generate_response, create_gemini_file
+from utils import generate_response, create_gemini_file, get_all_files_uploaded
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -8,7 +8,13 @@ if "messages" not in st.session_state:
 
 gemini_uploaded_files = []
 
-st.title("Chat with Gemini & File Upload")
+st.title("Spec Doc Analyzer")
+already_uploaded_files = list(get_all_files_uploaded())
+if already_uploaded_files:
+    st.sidebar.write("Already uploaded files:")
+    for file in already_uploaded_files:
+        if file.display_name:
+            st.sidebar.write(f"- {file.display_name}")
 
 # File uploader
 uploaded_files = st.file_uploader("Choose files (optional, content not yet sent to Gemini)", accept_multiple_files=True)
