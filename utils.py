@@ -28,12 +28,9 @@ def generate_response(prompt, uploaded_files):
         config=types.GenerateContentConfig(
         #     tools=ordering_system,
             system_instruction=SYSTEM_PROMPT,
+            temperature=0,
         ),
         contents=total_content,
-        generate_content_config = types.GenerateContentConfig(
-        temperature=0,
-        response_mime_type="text/plain",
-    )
     )
     return response.text
 
