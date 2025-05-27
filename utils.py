@@ -4,9 +4,10 @@ API_KEY = "AIzaSyCS2ETNURnJ8KRKCN_1cyIs94FXnQXh86s"
 
 # Only run this block for Gemini Developer API
 SYSTEM_PROMPT = """
-Your a help assistant who give replay to specification related question.
+Your an technical expert assistant who give replay to specification related question.
 You should search in the provide spec files and build a small replay for the questions
-like the give EXAMPLES.
+always prefer the uploaded files. if not found use your knowledge base.
+Always replay with a technical and expert manner.
 Also return whether the provided question is in the document or nor.
 """
 client = genai.Client(api_key=API_KEY)
